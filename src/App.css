@@ -1420,3 +1420,107 @@ justify-content: center;
 .back-icon-button:active {
   transform: scale(0.94);
 }
+.save-image-button {
+  width: calc(100% - 64px);
+  max-width: 360px;
+  height: 54px;
+  margin: 28px auto 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: #fff;
+  color: #ff7a00;
+  border: 1.5px solid #ff7a00;
+  border-radius: 18px;
+
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+
+  cursor: pointer;
+  box-shadow: none;
+  transition: background-color 0.2s ease,
+              color 0.2s ease,
+              transform 0.15s ease;
+}
+
+.save-image-button:hover {
+ background: #fff7ef;
+}
+
+.save-image-button:active {
+  transform: scale(0.98);
+}
+
+.share-result-card {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -9999;
+  pointer-events: none;
+
+  width: 540px;
+  height: 540px;
+  padding: 36px 40px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #fffaf5;
+  text-align: center;
+  color: #222;
+}
+
+.share-brand {
+  margin: 0 0 26px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ff7a00;
+}
+
+.share-label {
+  margin: 0 0 12px;
+  font-size: 20px;
+  color: #666;
+}
+
+.share-result-title {
+  margin: 0 0 20px;
+  font-size: 34px;
+  line-height: 1.35;
+  max-width: 460px;
+}
+
+.share-result-description {
+  margin: 0 0 28px;
+  max-width: 420px;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.share-match-label {
+  margin: 0 0 18px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.share-app-logo {
+  max-width: 280px;
+  max-height: 110px;
+  object-fit: contain;
+  margin-bottom: 38px;
+}
+
+.share-url {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ff7a00;
+}

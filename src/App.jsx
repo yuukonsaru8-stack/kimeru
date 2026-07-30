@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './App.css'
+import { toPng } from 'html-to-image'
 import pairsLogo from './assets/pairs.svg'
 import tinderLogo from './assets/tinder.png'
 import withLogo from "./assets/with.svg";
@@ -588,6 +589,8 @@ function calculateResult(answers) {
 
 function App() {
   const [page, setPage] = useState('home')
+  const resultCardRef = useRef(null)
+
   const Header = ({ setPage }) => (
   <header className="home-header">
     <img
@@ -691,6 +694,32 @@ const handlePreviousFoodQuestion = () => {
 
   setFoodQuestionIndex(previousIndex)
   setSelectedFoodChoice(foodAnswers[previousIndex] ?? null)
+}
+const handleSaveImage = async () => {
+  if (!resultCardRef.current) {
+    alert("保存する結果が見つかりませんでした")
+    return
+  }
+
+  try {
+    await document.fonts.ready
+
+    const dataUrl = await toPng(resultCardRef.current, {
+      cacheBust: true,
+      pixelRatio: 2,
+      backgroundColor: "#fffaf5",
+      width: 540,
+      height: 540,
+    })
+
+    const link = document.createElement("a")
+    link.download = "kimeru-result.png"
+    link.href = dataUrl
+    link.click()
+  } catch (error) {
+    console.error("画像の保存に失敗しました", error)
+    alert("画像の保存に失敗しました")
+  }
 }
 
    const handleFoodChoice = (choice) => {
@@ -1419,7 +1448,45 @@ const affiliateUrl =
     <main className="app-page result-page">
       <Header setPage={setPage} />
 
-      <section className="diagnosis-result">
+      <div
+  ref={resultCardRef}
+  className="share-result-card"
+>
+  
+
+  <p className="share-label">診断結果</p>
+
+  <h2 className="share-result-title">
+    {winnerData.emoji}
+    {winnerData.type}
+  </h2>
+
+  <p className="share-result-description">
+  {winnerData.description.split("\n").map((line, index) => (
+    <span key={index}>
+      {line}
+      <br />
+    </span>
+  ))}
+</p>
+
+  <p className="share-match-label">君に合うのは</p>
+
+  {winnerData.logo && (
+    <img
+      src={winnerData.logo}
+      alt={`${diagnosis.winner}のロゴ`}
+      className="share-app-logo"
+    />
+  )}
+
+  <p className="share-url">kimeru.jp</p>
+</div>
+
+<section className="diagnosis-result">
+
+
+        
         <h1 className="result-type">
           {winnerData.emoji}
           {winnerData.type}
@@ -1472,10 +1539,19 @@ const affiliateUrl =
           もう一度診断する
         </button>
       </section>
+      <button
+  type="button"
+  className="save-image-button"
+  onClick={handleSaveImage}
+>
+  結果を画像で保存
+</button>
+
     </main>
   )
 }
  return null
+
 }
 
 export default App
