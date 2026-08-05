@@ -12,6 +12,7 @@ import logoHorizontal from "./assets/kimeru_logo_horizontal.png";
 import kimeruLogoMark from "./assets/kimeru_logo_mark.png";
 import kimeruLogoTransparent from "./assets/kimeru_logo_transparent.png"
 import { ArrowLeft } from 'lucide-react'
+import PersonalityQuiz from "./PersonalityQuiz";
 
 const appNames = [
   'Pairs',
@@ -1021,6 +1022,30 @@ if (page === 'diagnosis-list') {
   </button>
 </article>
 
+<article className="diagnosis-card">
+  <div className="diagnosis-card-icon">😎</div>
+
+  <div className="diagnosis-card-body">
+    <p className="diagnosis-card-status">テスト中</p>
+
+    <h2>陽キャ・陰キャ診断</h2>
+
+    <p>
+      24問の質問から、
+      <br />
+      あなたのタイプを診断します。
+    </p>
+  </div>
+
+  <button
+    type="button"
+    className="diagnosis-card-button"
+    onClick={() => setPage("personality-quiz")}
+  >
+    診断する
+  </button>
+</article>
+
         <section className="coming-soon">
           <p className="coming-soon-label">COMING SOON</p>
 
@@ -1047,6 +1072,15 @@ if (page === 'diagnosis-list') {
           </div>
         </section>
       </section>
+    </main>
+  )
+}
+
+if (page === "personality-quiz") {
+  return (
+    <main className="food-page">
+      <Header setPage={setPage} />
+      <PersonalityQuiz />
     </main>
   )
 }

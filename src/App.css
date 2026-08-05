@@ -1058,13 +1058,21 @@ justify-content:center;
   margin-bottom: 20px;
 }
 
-.food-page .question-title{
-  margin: 20 0 40px;
+.food-page .question-title {
+  width: 100%;
+  margin: 28px auto 34px;
+  padding: 0 4px;
+
   color: #222222;
-  font-size: 26px;
-  line-height: 1.5;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
   text-align: center;
-  margin-bottom: 36px;
+
+  white-space: pre-line;
+  word-break: normal;
+  overflow-wrap: normal
 }
 
 .food-page .question-options{
@@ -1523,4 +1531,468 @@ justify-content: center;
   font-size: 16px;
   font-weight: 600;
   color: #ff7a00;
+}
+
+/* 陽キャ・陰キャ診断のプログレスバー */
+.personality-progress {
+  width: 100%;
+  height: 7px;
+  margin: 0 0 30px;
+
+  background: #f0ebe5;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.personality-progress-bar {
+  height: 100%;
+  border-radius: inherit;
+
+  background: linear-gradient(
+    90deg,
+    #ff9d3f 0%,
+    #ff7a00 100%
+  );
+
+  transition: width 0.35s ease;
+}
+/* 陽キャ・陰キャ診断の回答アニメーション */
+.question-option.selected {
+  border-color: #ff8a00;
+  background: #fff4e8;
+  color: #ff7a00;
+  transform: translateY(-2px) scale(0.99);
+  box-shadow: 0 8px 20px rgba(255, 138, 0, 0.18);
+}
+
+.question-option:disabled {
+  cursor: default;
+}
+
+.question-option:not(.selected):disabled {
+  opacity: 0.72;
+}
+/* =========================
+   陽キャ・陰キャ診断 結果ページ
+========================= */
+
+.personality-result-page {
+  width: 100%;
+  max-width: 402px;
+  margin: 0 auto;
+  padding: 24px 16px 52px;
+  background: #fffaf5;
+}
+
+/* -------------------------
+   ファーストビュー
+------------------------- */
+
+.personality-result-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 34px 20px 28px;
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 38%,
+      #fffaf0 0%,
+      #fff1d8 52%,
+      #ffe7bc 100%
+    );
+
+  border: 1px solid #f1d4ad;
+  border-radius: 28px;
+  box-shadow: 0 14px 34px rgba(202, 119, 34, 0.12);
+}
+
+.personality-result-label {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 6px 14px;
+
+  color: #df6900;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(223, 105, 0, 0.18);
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.personality-result-type {
+  margin: 0;
+  color: #d95f00;
+
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+
+.personality-result-subtitle {
+  display: inline-block;
+  margin: 14px 0 0;
+  padding: 8px 15px;
+
+  color: #fff;
+  background: linear-gradient(
+    180deg,
+    #f58a24 0%,
+    #e66d00 100%
+  );
+
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.personality-result-image {
+  display: block;
+  width: 100%;
+  max-width: 310px;
+  height: auto;
+  margin: 18px auto 0;
+
+  object-fit: contain;
+  filter: drop-shadow(
+    0 14px 16px rgba(120, 70, 20, 0.15)
+  );
+}
+
+.personality-result-summary {
+  max-width: 320px;
+  margin: 18px auto 0;
+  padding: 16px 18px;
+
+  color: #a94600;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(222, 109, 0, 0.2);
+  border-radius: 18px;
+
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+/* -------------------------
+   本文全体
+------------------------- */
+
+.personality-result-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.personality-result-section {
+  padding: 24px 20px;
+
+  background: #fff;
+  border: 1px solid #eee3d8;
+  border-radius: 22px;
+
+  box-shadow:
+    0 8px 22px rgba(50, 35, 20, 0.055);
+}
+
+.personality-result-section h2,
+.personality-section-title {
+  margin: 0 0 18px;
+  color: #292929;
+
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.personality-result-description {
+  margin: 0;
+  color: #474747;
+
+  font-size: 15px;
+  line-height: 1.95;
+  white-space: pre-line;
+}
+
+/* -------------------------
+   君の特徴
+------------------------- */
+
+.personality-feature-section {
+  padding: 26px 20px 22px;
+}
+
+.personality-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.personality-feature-item {
+  padding: 18px 16px;
+
+  background: #fffaf4;
+  border: 1px solid #f3e4d3;
+  border-radius: 17px;
+
+  text-align: left;
+}
+
+.personality-feature-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 0 0 10px;
+  color: #c85400;
+
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.personality-feature-title span {
+  flex: 0 0 auto;
+  font-size: 18px;
+}
+
+.personality-feature-text {
+  margin: 0;
+  color: #46413d;
+
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.9;
+  text-align: left;
+  white-space: pre-line;
+}
+
+.personality-feature-message {
+  position: relative;
+  margin: 18px 0 0;
+  padding: 19px 16px;
+
+  color: #bd4b00;
+  background:
+    linear-gradient(
+      145deg,
+      #fff4df 0%,
+      #ffead0 100%
+    );
+
+  border: 1px solid #f0c98e;
+  border-radius: 17px;
+
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.personality-feature-message::before {
+  content: "“";
+  position: absolute;
+  top: -10px;
+  left: 14px;
+
+  color: rgba(219, 100, 0, 0.22);
+  font-size: 45px;
+  font-family: serif;
+  line-height: 1;
+}
+
+/* -------------------------
+   リスト型セクション
+------------------------- */
+
+.personality-result-section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.personality-result-section li {
+  position: relative;
+  margin-top: 11px;
+  padding: 14px 14px 14px 42px;
+
+  color: #383838;
+  background: #fff9f2;
+  border: 1px solid #f8eee4;
+  border-radius: 14px;
+
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.personality-result-section li:first-child {
+  margin-top: 0;
+}
+
+.personality-result-section li::before {
+  content: "✓";
+  position: absolute;
+  top: 14px;
+  left: 16px;
+
+  color: #f07c10;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+/* -------------------------
+   最後のメッセージ
+------------------------- */
+
+.personality-result-ending {
+  padding: 30px 22px;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff7e7 0%,
+      #ffecd0 100%
+    );
+
+  border: 1px solid #f0cf9e;
+  border-radius: 24px;
+
+  box-shadow:
+    0 12px 28px rgba(199, 116, 24, 0.1);
+}
+
+.personality-result-ending h2 {
+  margin: 0 0 18px;
+  color: #d85d00;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.personality-result-ending p {
+  margin: 0;
+  color: #493a2f;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.9;
+}
+
+.personality-result-ending strong {
+  display: block;
+  margin-top: 20px;
+
+  color: #b94600;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.65;
+}
+
+/* -------------------------
+   再診断ボタン
+------------------------- */
+
+.personality-restart-button {
+  width: 100%;
+  max-width: none;
+  margin: 4px 0 0;
+}
+
+/* -------------------------
+   小さいスマホ
+------------------------- */
+
+@media (max-width: 380px) {
+  .personality-result-page {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .personality-result-type {
+    font-size: 30px;
+  }
+
+  .personality-result-subtitle {
+    font-size: 13px;
+  }
+
+  .personality-result-section {
+    padding-right: 17px;
+    padding-left: 17px;
+  }
+
+  .personality-feature-text,
+  .personality-result-description {
+    font-size: 14px;
+    margin-top: 0;
+  }
+}
+/* 君の特徴を中央揃えにする */
+.personality-feature-item {
+  text-align: center;
+}
+
+.personality-feature-title {
+  justify-content: center;
+  text-align: center;
+}
+
+.personality-feature-text {
+  text-align: center;
+}
+
+
+.love-text strong{
+    color:#333;
+    font-weight:700;
+}
+
+.love-text .love-subtitle:not(:first-child) {
+  margin-top: 16px;
+}
+
+.love-text br {
+  display: initial;
+}
+
+.love-subtitle {
+  display: table;
+  margin: 0 auto 10px;
+  padding: 6px 12px;
+
+  border-radius: 999px;
+  background: #fff4e7;
+  color: #d96500;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+/* 恋愛傾向内のコード上の改行を余白にしない */
+.love-text {
+  margin-top: 0;
+  line-height: 1.75;
+  text-align: center;
+  white-space: normal;
+}
+
+.love-catch {
+  margin: 4px 0 12px;
+  color: #d96500;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+}
+.personality-save-button {
+  width: 100%;
+  max-width: none;
+  margin-top: 14px;
 }
