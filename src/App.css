@@ -375,134 +375,342 @@ button {
 /* =========================
    DIAGNOSIS LIST
 ========================= */
+/* =========================
+   診断一覧ページ
+========================= */
 
 .diagnosis-list-page {
-  width: min(calc(100% - 32px), 402px);
+  width: min(calc(100% - 24px), 402px);
   min-height: 620px;
   margin: 24px auto;
+
   background: var(--bg);
+
   border: 1px solid #ece7df;
   border-radius: 22px;
+
   overflow: hidden;
+
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .diagnosis-list-content {
-  padding: 46px 26px 40px;
+  padding: 22px 14px 30px;
   text-align: center;
 }
+/* 上部タイトル */
 
 .diagnosis-list-label {
   margin: 0;
+
   color: var(--orange);
-  font-size: 12px;
-  font-weight: 700;
+
+  font-size: 11px;
+  font-weight: 800;
+
   letter-spacing: 0.18em;
 }
 
 .diagnosis-list-content > h1 {
-  margin: 12px 0 0;
+  margin: 5px 0 18px;
+
   color: var(--text);
-  font-size: 34px;
-  line-height: 1.4;
+
+  font-size: 26px;
+  font-weight: 700;
+
+  line-height: 1.35;
 }
 
 .diagnosis-list-description {
-  margin: 18px 0 0;
-  color: #666;
-  font-size: 15px;
-  line-height: 1.8;
+  margin: 10px 0 20px;
+
+  color: #777;
+
+  font-size: 13px;
+
+  line-height: 1.65;
 }
 
-.diagnosis-card {
+
+/* =========================
+   陽キャ・陰キャ
+   メイン大型カード
+========================= */
+
+.diagnosis-featured-card {
+  position: relative;
+
   width: 100%;
-  margin-top: 34px;
-  padding: 24px 20px;
+
+  display: grid;
+  grid-template-columns: 43% 57%;
+  align-items: center;
+
+  padding: 18px 14px 14px;
+
+  background: linear-gradient(
+    145deg,
+    #fffdfa 0%,
+    #fff7ea 100%
+  );
+
+  border: 1px solid #f1d5aa;
+  border-radius: 20px;
+
+  box-sizing: border-box;
+
+  text-align: left;
+
+  overflow: hidden;
+
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.05);
+}
+
+.diagnosis-featured-card h2 {
+  font-size: 19px;
+  white-space: nowrap;
+}
+
+.diagnosis-featured-text {
+  position: relative;
+  z-index: 2;
+}
+
+.diagnosis-featured-text .diagnosis-card-status {
+  margin: 0 0 8px;
+}
+
+.diagnosis-featured-text h2 {
+  margin: 0;
+
+  color: #292929;
+
+  font-size: 20px;
+  font-weight: 800;
+
+  line-height: 1.4;
+}
+
+.diagnosis-featured-text > p:not(.diagnosis-card-status) {
+  margin: 8px 0 0;
+
+  color: #666;
+
+  font-size: 11px;
+
+  line-height: 1.65;
+}
+
+
+/* キャラ集合画像 */
+
+.diagnosis-featured-image-wrap {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.diagnosis-featured-image {
+  display: block;
+
+  width: 118%;
+  max-width: none;
+  height: auto;
+
+  object-fit: contain;
+
+  transform: translateX(3%);
+}
+
+
+/* メインボタン */
+
+.diagnosis-featured-button {
+  width: 116px;
+  min-height: 40px;
+
+  margin-top: 12px;
+  padding: 8px 12px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: var(--orange);
+
+  color: #fff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 7px 15px rgba(255, 135, 0, 0.2);
+}
+
+
+/* =========================
+   下の2診断
+========================= */
+
+.diagnosis-small-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-top: 12px;
+}
+
+.diagnosis-small-card {
+  width: 100%;
+
+  padding: 14px 9px 12px;
+
   background: #fff;
+
   border: 1px solid #ebe6df;
   border-radius: 18px;
+
+  box-sizing: border-box;
+
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.045);
 }
 
-.diagnosis-card-icon {
-  font-size: 30px;
-  color: var(--orange);
+
+/* 小型カードのアイコン */
+
+.diagnosis-small-visual {
+  min-height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.diagnosis-small-icon {
+  color: var(--orange);
+
+  font-size: 25px;
+
+  line-height: 1;
+}
+
+
+/* ステータス */
 
 .diagnosis-card-status {
   display: inline-block;
-  margin: 12px 0 0;
-  padding: 4px 10px;
+  margin: 12px 0;
+  padding: 0;
+  background: transparent;
+  color: #222;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+/* 小型カードタイトル */
+
+.diagnosis-small-card h2 {
+  margin: 9px 0 0;
+
+  color: #292929;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  line-height: 1.45;
+}
+
+
+/* 小型カード説明 */
+
+.diagnosis-small-description {
+  margin: 7px 0 0;
+
+  color: #777;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+
+/* 小型カードボタン */
+
+.diagnosis-small-button {
+  width: 100%;
+  min-height: 36px;
+
+  margin-top: 10px;
+  padding: 7px 8px;
+
+  border: 1px solid var(--orange);
   border-radius: 999px;
-  background: #fff1df;
+
+  background: #fff;
+
   color: var(--orange);
+
   font-size: 12px;
   font-weight: 700;
-}
 
-.diagnosis-card h2 {
-  margin: 14px 0 0;
-  font-size: 23px;
-  line-height: 1.5;
-}
-
-.diagnosis-card-body > p:last-child {
-  margin: 14px 0 0;
-  color: #666;
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-.diagnosis-card-button {
-  width: 190px;
-  min-height: 48px;
-  margin-top: 22px;
-  padding: 12px 20px;
-  border: 0;
-  border-radius: 999px;
-  background: var(--orange);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 8px 18px rgba(255, 135, 0, 0.2);
 }
+
+
+/* =========================
+   COMING SOON
+========================= */
 
 .coming-soon {
-  margin-top: 38px;
+  margin-top: 24px;
 }
 
 .coming-soon-label {
-  margin: 0 0 16px;
-  color: #888;
-  font-size: 12px;
+  margin: 0 0 12px;
+
+  color: #999;
+
+  font-size: 10px;
   font-weight: 700;
+
   letter-spacing: 0.14em;
 }
 
 .coming-soon-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+
+  gap: 9px;
 }
 
 .coming-soon-card {
-  padding: 18px 10px;
+  padding: 12px 8px;
+
   background: rgba(255, 255, 255, 0.55);
+
   border: 1px solid #ebe6df;
-  border-radius: 14px;
+  border-radius: 12px;
 }
 
 .coming-soon-card span {
   color: #999;
-  font-size: 11px;
+
+  font-size: 10px;
 }
 
 .coming-soon-card p {
-  margin: 7px 0 0;
+  margin: 5px 0 0;
+
   color: #777;
-  font-size: 14px;
+
+  font-size: 12px;
   font-weight: 600;
 }
 /* 共通ヘッダー後のレイアウト調整 */
@@ -1636,6 +1844,7 @@ justify-content: center;
   display: inline-block;
   margin: 14px 0 0;
   padding: 8px 15px;
+  white-space: pre-line;
 
   color: #fff;
   background: linear-gradient(
@@ -1643,7 +1852,6 @@ justify-content: center;
     #f58a24 0%,
     #e66d00 100%
   );
-
   border-radius: 999px;
   font-size: 14px;
   font-weight: 700;
@@ -1653,9 +1861,9 @@ justify-content: center;
 .personality-result-image {
   display: block;
   width: 100%;
-  max-width: 310px;
+  max-width: 240px;
   height: auto;
-  margin: 18px auto 0;
+  margin: 12px auto 0;
 
   object-fit: contain;
   filter: drop-shadow(
@@ -1676,6 +1884,7 @@ justify-content: center;
   font-size: 17px;
   font-weight: 700;
   line-height: 1.7;
+  white-space: pre-line;
 }
 
 /* -------------------------
@@ -1818,9 +2027,13 @@ justify-content: center;
 }
 
 .personality-result-section li {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
   margin-top: 11px;
-  padding: 14px 14px 14px 42px;
+  padding: 14px;
 
   color: #383838;
   background: #fff9f2;
@@ -1838,15 +2051,10 @@ justify-content: center;
 
 .personality-result-section li::before {
   content: "✓";
-  position: absolute;
-  top: 14px;
-  left: 16px;
-
   color: #f07c10;
   font-size: 16px;
   font-weight: 900;
 }
-
 /* -------------------------
    最後のメッセージ
 ------------------------- */
@@ -1995,4 +2203,161 @@ justify-content: center;
   width: 100%;
   max-width: none;
   margin-top: 14px;
+}
+
+/* =========================
+   トップページ：陽キャ・陰キャ診断
+========================= */
+
+.personality-top-section {
+  width: calc(100% - 32px);
+  max-width: 860px;
+  margin: 20px auto 80px;
+  padding: 42px 24px 36px;
+
+  text-align: center;
+
+  background: #fff;
+
+  border: 1px solid #f4d29a;
+  border-radius: 28px;
+  box-sizing: border-box;
+}
+
+.personality-top-label {
+  display: inline-block;
+
+  margin: 0 0 14px;
+  padding: 7px 16px;
+
+  color: #e56d00;
+  background: #fff;
+
+  border: 1px solid #f4d29a;
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.personality-top-title {
+  margin: 0;
+
+  color: #292929;
+
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.personality-top-description {
+  margin: 14px 0 0;
+
+  color: #666;
+
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+.personality-top-characters {
+  display: block;
+
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+
+  margin: 28px auto 0;
+
+  object-fit: contain;
+}
+
+.personality-top-button {
+  display: block;
+
+  width: 100%;
+  max-width: 320px;
+
+  margin: 26px auto 0;
+  padding: 15px 24px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    180deg,
+    #ff941f 0%,
+    #f27600 100%
+  );
+
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 18px rgba(238, 116, 0, 0.2);
+}
+
+.personality-top-button:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .personality-top-section {
+    width: calc(100% - 24px);
+    margin: 32px auto;
+    padding: 30px 14px 28px;
+    border-radius: 24px;
+  }
+
+  .personality-top-label {
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+
+  .personality-top-title {
+    font-size: 27px;
+  }
+
+  .personality-top-description {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .personality-top-characters {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 22px;
+  }
+
+  .personality-top-button {
+    max-width: 290px;
+    margin-top: 22px;
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+/* 診断一覧：マッチングアプリ背景 */
+.matching-bg-card {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.20)),
+    url("./assets/matching-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 診断一覧：今日のごはん背景 */
+.food-bg-card {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.20)),
+    url("./assets/food-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

@@ -168,7 +168,7 @@ export const personalityQuestions = [
         scores: [0, 0, 1, 0, 2, 3, 1, 1],
       },
       {
-        text: "送りたいけどタイミングがつかめない",
+        text: "参加するタイミングがつかめない",
         scores: [0, 0, 0, 0, 3, 1, 0, 2],
       },
       {
@@ -183,23 +183,23 @@ export const personalityQuestions = [
     question: "あなたが最も\n心地いい時間は？",
     options: [
       {
-        text: "みんなでワイワイしている時間",
+        text: "みんなでワイワイしている時",
         scores: [3, 2, 0, 2, 0, 0, 0, 0],
       },
       {
-        text: "気の合う人とゆっくり過ごす時間",
+        text: "気の合う人とゆっくり過ごす時",
         scores: [0, 2, 3, 1, 2, 0, 0, 0],
       },
       {
-        text: "気を遣わず一人でのんびり過ごす時間",
+        text: "気を遣わず一人でのんびり過ごす時",
         scores: [0, 0, 0, 3, 2, 2, 0, 1],
       },
       {
-        text: "好きなことに夢中になっている時間",
+        text: "好きなことに夢中になっている時",
         scores: [0, 0, 0, 0, 0, 1, 4, 2],
       },
       {
-        text: "何も考えず一人でいる時間",
+        text: "何も考えず一人でいる時",
         scores: [0, 0, 0, 0, 1, 2, 0, 3],
       },
     ],
@@ -230,7 +230,7 @@ export const personalityQuestions = [
 
   {
     id: 10,
-    question: "友達と遊ぶ場所を決めるとき、\nあなたは？",
+    question: "友達と遊ぶ場所を決める時、\nあなたは？",
     options: [
       {
         text: "自分から提案する",
@@ -290,7 +290,7 @@ export const personalityQuestions = [
         scores: [0, 0, 1, 2, 3, 1, 1, 0],
       },
       {
-        text: "恥ずかしくて何日も思い出してしまう",
+        text: "恥ずかしくて何日か引きずる",
         scores: [0, 0, 0, 0, 4, 0, 0, 2],
       },
       {
@@ -348,7 +348,7 @@ export const personalityQuestions = [
 
   {
     id: 15,
-    question: "初対面で人とたくさん話したあと、\nあなたは？",
+    question: "初対面の人とたくさん話すと\n疲れる？",
     options: [
       {
         text: "全然疲れない",
@@ -447,7 +447,7 @@ export const personalityQuestions = [
 
   {
     id: 19,
-    question: "あなたにとって「一人の時間」は？",
+    question: "あなたにとって\n「一人の時間」は？",
     options: [
       {
         text: "あまりなくても平気",
@@ -470,7 +470,7 @@ export const personalityQuestions = [
 
   {
     id: 20,
-    question: "好きなことについて話すとき、\nあなたは？",
+    question: "好きなことを話すとき、\nあなたは？",
     options: [
       {
         text: "誰とでも話せる",

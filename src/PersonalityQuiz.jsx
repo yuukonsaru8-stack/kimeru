@@ -30,6 +30,9 @@ const [isTransitioning, setIsTransitioning] = useState(false);
       (score, index) => score + answerScores[index]
     );
 
+    console.log("今回の配点:", answerScores);
+console.log("加算後のスコア:", newScores);
+
     setScoreHistory((history) => [...history, answerScores]);
     setScores(newScores);
 
@@ -80,7 +83,7 @@ setIsTransitioning(false);
 
   try {
     const canvas = await html2canvas(resultElement, {
-  backgroundColor: "#fffaf5",
+  backgroundColor: null,
   scale: 3,
   useCORS: true,
 });
@@ -100,8 +103,11 @@ setIsTransitioning(false);
   const maxScore = Math.max(...scores);
   const resultIndex = scores.indexOf(maxScore);
 
-  const result =
-    personalityResults[resultIndex] ?? personalityResults[0];
+  console.log("最終スコア:", scores);
+console.log("最大スコア:", maxScore);
+console.log("結果番号:", resultIndex);
+
+const result = personalityResults[0];
 
   return (
     <section
@@ -123,11 +129,11 @@ setIsTransitioning(false);
           {result.subtitle}
         </p>
 
-        <img
-          src={result.image}
-          alt={result.type}
-          className="personality-result-image"
-        />
+  <img
+  src={result.image}
+  alt={result.type}
+  className="personality-result-image"
+/>
 
         <p className="personality-result-summary">
           {result.summary}

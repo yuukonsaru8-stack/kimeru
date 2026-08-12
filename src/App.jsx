@@ -13,6 +13,7 @@ import kimeruLogoMark from "./assets/kimeru_logo_mark.png";
 import kimeruLogoTransparent from "./assets/kimeru_logo_transparent.png"
 import { ArrowLeft } from 'lucide-react'
 import PersonalityQuiz from "./PersonalityQuiz";
+import charactersGroup from "./assets/characters-group.png";
 
 const appNames = [
   'Pairs',
@@ -897,6 +898,44 @@ if (page === 'home') {
           診断をはじめる
         </button>
       </section>
+
+
+      <section className="personality-top-section">
+  <div className="personality-top-inner">
+
+    <p className="personality-top-label">
+      人気診断
+    </p>
+
+    <h2 className="personality-top-title">
+      陽キャ・陰キャ
+    </h2>
+
+    <p className="personality-top-description">
+  25問に答えるだけで、
+  <br />
+  陽キャ4タイプ・陰キャ4タイプの
+  <br />
+  全8キャラからあなたのタイプを診断。
+</p>
+
+    <img
+      src={charactersGroup}
+      alt="陽キャ・陰キャ診断 8タイプのキャラクター"
+      className="personality-top-characters"
+    />
+
+    <button
+      className="personality-top-button"
+      onClick={() => setPage("personality-quiz")}
+    >
+      診断してみる
+    </button>
+
+  </div>
+</section>
+
+
 <section className="about-section">
   <div className="about-text">
     <h2>決める。とは？</h2>
@@ -923,37 +962,6 @@ if (page === 'home') {
 </section>
 
 <section className="future-categories-section">
-  <p className="future-categories-label">
-    COMING NEXT
-  </p>
-
-
-  <div className="future-categories-grid">
-    <div className="future-category-card">
-      恋愛
-    </div>
-
-    <div className="future-category-card">
-      仕事
-    </div>
-
-    <div className="future-category-card">
-      お金
-    </div>
-
-    <div className="future-category-card">
-      暮らし
-    </div>
-
-    <div className="future-category-card">
-      今日のごはん
-    </div>
-
-    <div className="future-category-card">
-      その他
-    </div>
-  </div>
-
   <p className="future-categories-message">
     次は、何を決めよう。
   </p>
@@ -969,83 +977,102 @@ if (page === 'diagnosis-list') {
 
       <section className="diagnosis-list-content">
         <p className="diagnosis-list-label">DIAGNOSIS</p>
+
         <h1>診断を選ぶ。</h1>
-        <p className="diagnosis-list-description">
-          今のあなたに必要な答えを、
-          <br />
-          ここから選ぼう。
-        </p>
 
-        <article className="diagnosis-card">
-          <div className="diagnosis-card-icon">♡</div>
+    
+        {/* =========================
+            メイン診断
+        ========================= */}
+        <article className="diagnosis-featured-card">
+          <div className="diagnosis-featured-text">
+            <p className="diagnosis-card-status">陽キャ・陰キャ</p>
 
-          <div className="diagnosis-card-body">
-            <p className="diagnosis-card-status">公開中</p>
+           <p>
+  25問の質問で
+  <br />
+  全8キャラの中から
+  <br />
+  あなたのタイプを診断。
+</p>
+            <button
+              type="button"
+              className="diagnosis-featured-button"
+              onClick={() => setPage('personality-quiz')}
+            >
+              診断する
+            </button>
+          </div>
+
+          <div className="diagnosis-featured-image-wrap">
+            <img
+              src={charactersGroup}
+              alt="陽キャ・陰キャ診断 8タイプのキャラクター"
+              className="diagnosis-featured-image"
+            />
+          </div>
+        </article>
+
+        {/* =========================
+            その他の診断
+        ========================= */}
+        <div className="diagnosis-small-grid">
+
+          {/* マッチングアプリ診断 */}
+          <article className="diagnosis-small-card matching-bg-card">
+            <div className="diagnosis-small-visual">
+              <div className="diagnosis-small-icon">♡</div>
+            </div>
+
+        
+
             <h2>マッチングアプリ診断</h2>
-            <p>
+
+            <p className="diagnosis-small-description">
               5つの質問から、
               <br />
               あなたに合うアプリを決めます。
             </p>
-          </div>
 
-          <button
-            type="button"
-            className="diagnosis-card-button"
-            onClick={handleStartDiagnosis}
-          >
-            診断する
-          </button>
-        </article>
+            <button
+              type="button"
+              className="diagnosis-small-button"
+              onClick={handleStartDiagnosis}
+            >
+              診断する
+            </button>
+          </article>
 
-<article className="diagnosis-card food-diagnosis-card">
-  <div className="diagnosis-card-icon">🍚</div>
+          {/* 今日のごはん */}
+          <article className="diagnosis-small-card food-bg-card">
+            <div className="diagnosis-small-visual">
+              <div className="diagnosis-small-icon">🍚</div>
+            </div>
 
-  <div className="diagnosis-card-body">
-    <p className="diagnosis-card-status">公開中</p>
+            
 
-    <h2>今日のごはん</h2>
+            <h2>今日のごはん</h2>
 
-    <p>
-      肉か魚、米かパン。
-      <br />
-      今日の迷いを決めます。
-    </p>
-  </div>
+            <p className="diagnosis-small-description">
+              肉か魚、米かパン。
+              <br />
+              今日の迷いを決めます。
+            </p>
 
-  <button
-    type="button"
-    className="diagnosis-card-button"
-    onClick={() => setPage('food-list')}
-  >
-    選ぶ
-  </button>
-</article>
+            <button
+              type="button"
+              className="diagnosis-small-button"
+              onClick={() => setPage('food-list')}
+            >
+              選ぶ
+            </button>
+          </article>
 
-<article className="diagnosis-card">
-  <div className="diagnosis-card-icon">😎</div>
+        </div>
 
-  <div className="diagnosis-card-body">
-    <p className="diagnosis-card-status">テスト中</p>
-
-    <h2>陽キャ・陰キャ診断</h2>
-
-    <p>
-      24問の質問から、
-      <br />
-      あなたのタイプを診断します。
-    </p>
-  </div>
-
-  <button
-    type="button"
-    className="diagnosis-card-button"
-    onClick={() => setPage("personality-quiz")}
-  >
-    診断する
-  </button>
-</article>
-
+        {/* =========================
+            Coming Soon
+        ========================= */}
         <section className="coming-soon">
           <p className="coming-soon-label">COMING SOON</p>
 
