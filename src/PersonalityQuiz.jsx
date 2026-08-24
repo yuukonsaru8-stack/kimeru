@@ -107,7 +107,7 @@ setIsTransitioning(false);
 console.log("最大スコア:", maxScore);
 console.log("結果番号:", resultIndex);
 
-const result = personalityResults[0];
+const result = personalityResults[resultIndex];
 
   return (
     <section
