@@ -614,9 +614,7 @@ function App() {
         診断
       </button>
 
-      <button>記事</button>
-      <button>お気に入り</button>
-      <button className="menu-button">☰</button>
+      
     </nav>
   </header>
 );
@@ -867,6 +865,7 @@ const handleRandomFood = () => {
 
 if (page === 'home') {
   return (
+  <>
     <main className="home-page">
       
       <Header setPage={setPage} />
@@ -966,9 +965,103 @@ if (page === 'home') {
     次は、何を決めよう。
   </p>
 </section>
-    </main>
-  )
+</main>
+
+<footer className="site-footer">
+  <button
+    type="button"
+    onClick={() => setPage('privacy')}
+    className="footer-link"
+  >
+    プライバシーポリシー
+  </button>
+
+  <span>© 決める。</span>
+</footer>
+
+</>
+)
 }
+
+  if (page === 'privacy') {
+    return (
+      <main className="privacy-page">
+        <Header setPage={setPage} />
+
+        <section className="privacy-content">
+          <h1>プライバシーポリシー</h1>
+
+          <p>
+            「決める。」（以下「当サイト」）では、利用者のプライバシーを尊重し、
+            個人情報および利用情報を適切に取り扱います。
+          </p>
+
+          <h2>1. アクセス解析について</h2>
+          <p>
+            当サイトでは、サイトの利用状況を把握し、サービスの改善に役立てるため、
+            Google Analyticsを利用しています。
+          </p>
+          <p>
+            Google Analyticsでは、Cookie等を利用してアクセス情報を収集する場合があります。
+            これらの情報は、個人を直接特定するものではありません。
+          </p>
+          <p>
+            利用者は、ブラウザの設定によりCookieを無効にすることができます。
+          </p>
+
+          <h2>2. 個人情報の取得について</h2>
+          <p>
+            当サイトでは、お問い合わせ等の際に、メールアドレスなどの個人情報を
+            ご提供いただく場合があります。
+          </p>
+          <p>
+            取得した個人情報は、お問い合わせへの対応など、
+            必要な目的の範囲内で利用します。
+          </p>
+
+          <h2>3. 個人情報の第三者提供について</h2>
+          <p>
+            取得した個人情報は、法令に基づく場合を除き、
+            本人の同意なく第三者に提供することはありません。
+          </p>
+
+          <h2>4. 外部サービスについて</h2>
+          <p>
+            当サイトでは、アクセス解析、広告、アフィリエイトサービス等の
+            外部サービスを利用する場合があります。
+          </p>
+          <p>
+            これらのサービスでは、Cookie等を利用して情報を取得する場合があります。
+          </p>
+
+          <h2>5. 免責事項</h2>
+          <p>
+            当サイトに掲載する情報について、できる限り正確な情報を提供するよう
+            努めていますが、その正確性・完全性を保証するものではありません。
+          </p>
+          <p>
+            当サイトの情報を利用したことによって生じた損害等について、
+            当サイトでは責任を負いかねます。
+          </p>
+
+          <h2>6. プライバシーポリシーの変更</h2>
+          <p>
+            当サイトは、必要に応じて本ポリシーの内容を変更することがあります。
+          </p>
+
+          <h2>7. お問い合わせ</h2>
+          <p>
+            本ポリシーに関するお問い合わせは、下記メールアドレスまでお願いいたします。
+          </p>
+          <p>
+            kimeru.contact@gmail.com
+          </p>
+
+          <p>制定日：2026年10月7日</p>
+        </section>
+      </main>
+    )
+  }
 
 if (page === 'diagnosis-list') {
   return (

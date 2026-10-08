@@ -2361,3 +2361,145 @@ justify-content: center;
   background-position: center;
   background-repeat: no-repeat;
 }
+
+/* =========================
+   フッター
+========================= */
+
+.site-footer {
+  width: 100%;
+  padding: 32px 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  background: #fffaf5;
+  border-top: 1px solid #f1e7dc;
+  color: #777;
+  font-size: 14px;
+}
+
+.footer-link {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: #777;
+  font: inherit;
+  cursor: pointer;
+}
+
+.footer-link:hover {
+  color: #ff7a00;
+}
+
+
+/* =========================
+   プライバシーポリシー
+========================= */
+
+.privacy-page {
+  width: min(calc(100% - 32px), 402px);
+  min-height: 620px;
+  margin: 24px auto;
+  padding: 0;
+  background: var(--bg);
+  border: 1px solid #ece7df;
+  border-radius: 22px;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.privacy-content {
+  width: auto;
+  margin: 0;
+  padding: 48px 28px 72px;
+  text-align: left;
+  color: #444;
+  line-height: 1.9;
+}
+
+.privacy-content h1 {
+  margin: 0 0 48px;
+  text-align: center;
+  color: #222;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.privacy-content h2 {
+  margin: 42px 0 14px;
+  color: #222;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.privacy-content p {
+  margin: 0 0 16px;
+  font-size: 15px;
+}
+
+
+/* スマホ */
+@media (max-width: 600px) {
+  .site-footer {
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 20px;
+  }
+
+  .privacy-content {
+    width: calc(100% - 40px);
+    padding: 48px 0 72px;
+  }
+
+  .privacy-content h1 {
+    margin-bottom: 36px;
+    font-size: 26px;
+  }
+
+  .privacy-content h2 {
+    margin-top: 34px;
+    font-size: 18px;
+  }
+
+  .privacy-content p {
+    font-size: 14px;
+  }
+}
+.home-page + .site-footer {
+  width: min(calc(100% - 32px), 402px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.diagnosis-small-button {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.diagnosis-small-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(255, 145, 0, 0.25);
+}
+
+.diagnosis-small-button:active {
+  transform: scale(0.97);
+}
+
+.diagnosis-featured-button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.diagnosis-featured-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(255, 145, 0, 0.3);
+}
+
+.diagnosis-featured-button:active {
+  transform: scale(0.97);
+}
