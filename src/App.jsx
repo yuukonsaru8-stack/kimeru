@@ -14,6 +14,7 @@ import kimeruLogoTransparent from "./assets/kimeru_logo_transparent.png"
 import { ArrowLeft } from 'lucide-react'
 import PersonalityQuiz from "./PersonalityQuiz";
 import charactersGroup from "./assets/characters-group.png";
+import { personalityResults } from './personalityResultData';
 
 const appNames = [
   'Pairs',
@@ -610,13 +611,46 @@ function App() {
     />
 
     <nav className="home-nav">
-      <button onClick={() => setPage("diagnosis-list")}>
-        診断
-      </button>
+  <details className="header-menu">
+    <summary className="header-menu-button" aria-label="メニュー">
+      ☰
+    </summary>
 
-      
-    </nav>
+    <div className="header-menu-content">
+      <button
+        type="button"
+        onClick={() => setPage("privacy")}
+      >
+        プライバシーポリシー
+      </button>
+    </div>
+  </details>
+</nav>
   </header>
+);
+const BottomNav = ({ setPage }) => (
+<nav className="bottom-nav">
+  <button onClick={() => setPage('home')}>
+    <span>⌂</span>
+    ホーム
+  </button>
+
+  <button onClick={() => setPage('diagnosis-list')}>
+    <span>☷</span>
+    診断一覧
+  </button>
+
+  <button onClick={() => setPage('personality-types')}>
+    <span>♧</span>
+    性格タイプ
+  </button>
+
+  <button onClick={() => setPage('about')}>
+    <span>ⓘ</span>
+    決める。とは
+  </button>
+</nav>
+
 );
   const [questionIndex, setQuestionIndex] = useState(0)
   const [selectedChoice, setSelectedChoice] = useState(null)
@@ -870,36 +904,7 @@ if (page === 'home') {
       
       <Header setPage={setPage} />
 
-      <section className="home-hero">
-        <img
-  src={kimeruLogoMark}
-  alt="決める。"
-  className="intro-main-logo"
-/>
-        <h1>
-  迷ったら
-  <br />
-  <span>
-    決める
-    <span className="home-accent">。</span>
-  </span>
-</h1>
-
-        <p>
-  情報を増やさない。<span className="home-accent">答えを出す。</span>
-</p>
-
-        <button
-          type="button"
-          className="home-start-button"
-          onClick={() => setPage('diagnosis-list')}
-        >
-          診断をはじめる
-        </button>
-      </section>
-
-
-      <section className="personality-top-section">
+     <section className="personality-top-section">
   <div className="personality-top-inner">
 
     <p className="personality-top-label">
@@ -934,53 +939,75 @@ if (page === 'home') {
   </div>
 </section>
 
-
-<section className="about-section">
-  <div className="about-text">
-    <h2>決める。とは？</h2>
-
-    <div className="about-line"></div>
-
-    <p>
-      選択肢が多すぎて、
-      <br />
-      何を選べばいいか分からない。
-      <br />
-      そんな迷いに、
-      <br />
-      いくつかの質問から答えを出します。
-    </p>
-
-    <p className="about-bottom">
-      情報を増やさない。
-      <br />
-      あなたの次の一歩を
-      <span>決める。</span>
-    </p>
-  </div>
-</section>
-
-<section className="future-categories-section">
-  <p className="future-categories-message">
-    次は、何を決めよう。
-  </p>
-</section>
 </main>
 
-<footer className="site-footer">
-  <button
-    type="button"
-    onClick={() => setPage('privacy')}
-    className="footer-link"
-  >
-    プライバシーポリシー
-  </button>
-
-  <span>© 決める。</span>
-</footer>
+<BottomNav setPage={setPage} />
 
 </>
 )
+}
+if (page === 'about') {
+  return (
+  <>
+    <main className="home-page">
+      <Header setPage={setPage} />
+
+      <section className="home-hero">
+        <img
+          src={kimeruLogoMark}
+          alt="決める。"
+          className="intro-main-logo"
+        />
+
+        <h1>
+          迷ったら
+          <br />
+          <span>
+            決める<span className="home-accent">。</span>
+          </span>
+        </h1>
+
+        <p>
+          情報を増やさない。
+          <span className="home-accent">答えを出す。</span>
+        </p>
+
+        <button
+          type="button"
+          className="home-start-button"
+          onClick={() => setPage('diagnosis-list')}
+        >
+          診断をはじめる
+        </button>
+      </section>
+
+      <section className="about-section">
+        <div className="about-text">
+          <h2>決める。とは？</h2>
+          <div className="about-line"></div>
+
+          <p>
+            選択肢が多すぎて、
+            <br />
+            何を選べばいいか分からない。
+            <br />
+            そんな迷いに、
+            <br />
+            いくつかの質問から答えを出します。
+          </p>
+
+          <p className="about-bottom">
+            情報を増やさない。
+            <br />
+            あなたの次の一歩を
+            <span>決める。</span>
+          </p>
+        </div>
+      </section>
+       </main>
+    <BottomNav setPage={setPage} />
+  </>
+  )
 }
 
   if (page === 'privacy') {
@@ -1063,8 +1090,100 @@ if (page === 'home') {
     )
   }
 
+  if (page === 'personality-types') {
+  const types = [
+    { name: '👑 王道陽キャ', image: 'king.png', description: 'みんなの中心で輝くリーダータイプ' },
+    { name: '🌟 万能陽キャ', image: 'allrounder.png', description: '誰とでも自然に打ち解ける人気者' },
+    { name: '🌿 穏和陽キャ', image: 'calm.png', description: '優しさで周囲を包み込む癒し系' },
+    { name: '🎭 仮面陽キャ', image: 'mask-positive.png', description: '明るく振る舞いながら自分の時間も大切にする' },
+    { name: '🌙 仮面陰キャ', image: 'masked-introvert.png', description: '人付き合い上手な隠れ内向型' },
+    { name: '🏔️ 孤高陰キャ', image: 'lonewolf.png', description: '自分の世界を大切にする自由人' },
+    { name: '🎨 職人陰キャ', image: 'artisan.png', description: '好きなことをとことん極める探究者' },
+    { name: '🌌 純正陰キャ', image: 'pure-introvert.png', description: '静かな時間を愛するマイペースタイプ' },
+  ];
+
+  return (
+    <main className="personality-types-page">
+      <Header setPage={setPage} />
+
+      <section className="personality-types-content">
+        <h1>8つの性格タイプ</h1>
+        <p>あなたはどのタイプ？</p>
+
+        {types.map((type, index) => (
+          <button
+            key={type.image}
+            type="button"
+            className="personality-type-card"
+            onClick={() => setPage(`personality-detail-${index}`)}
+          >
+            <img
+              src={`/characters/${type.image}`}
+              alt={type.name}
+            />
+            <h2>{type.name}</h2>
+            <p>{type.description}</p>
+            <span>詳しく見る →</span>
+          </button>
+        ))}
+      </section>
+
+      <BottomNav setPage={setPage} />
+    </main>
+  );
+}
+
+if (page.startsWith('personality-detail-')) {
+  const index = Number(page.replace('personality-detail-', ''));
+  const result = personalityResults[index];
+
+  if (!result) {
+    setPage('personality-types');
+    return null;
+  }
+
+  return (
+    <main className="personality-detail-page">
+      <Header setPage={setPage} />
+
+      <section className="personality-detail-content">
+        <p className="personality-detail-label">PERSONALITY TYPE</p>
+
+        <img
+          src={result.image}
+          alt={result.type}
+          className="personality-detail-image"
+        />
+
+        <h1>{result.type}</h1>
+        <h2>{result.subtitle}</h2>
+        <p className="personality-detail-summary">{result.summary}</p>
+
+        <div className="personality-detail-features">
+          {result.featureSections?.map((feature, i) => (
+            <div className="personality-detail-feature" key={i}>
+              <h3>{feature.icon} {feature.title}</h3>
+              <p>{feature.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <button
+          className="personality-detail-back"
+          onClick={() => setPage('personality-types')}
+        >
+          ← 8つの性格タイプに戻る
+        </button>
+      </section>
+
+      <BottomNav setPage={setPage} />
+    </main>
+  );
+}
+
 if (page === 'diagnosis-list') {
   return (
+  <>
     <main className="diagnosis-list-page">
       <Header setPage={setPage} />
 
@@ -1193,6 +1312,8 @@ if (page === 'diagnosis-list') {
         </section>
       </section>
     </main>
+    <BottomNav setPage={setPage} />
+  </>
   )
 }
 

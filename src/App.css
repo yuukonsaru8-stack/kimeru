@@ -2503,3 +2503,323 @@ justify-content: center;
 .diagnosis-featured-button:active {
   transform: scale(0.97);
 }
+
+/* 下部固定ナビゲーション */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 428px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #ffffff;
+  border-top: 1px solid #eeeeee;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04);
+  z-index: 1000;
+}
+
+.bottom-nav button {
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: #777777;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.bottom-nav button span {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.bottom-nav button:hover {
+  color: #ff8500;
+  background: #fff8f0;
+}
+
+/* メニューがコンテンツを隠さないようにする */
+.home-page {
+  padding-bottom: 90px;
+}
+/* ヘッダーの3本線メニュー */
+.home-nav {
+  position: relative;
+}
+
+.header-menu {
+  position: relative;
+}
+
+.header-menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 25px;
+  color: #333;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.header-menu-button::-webkit-details-marker {
+  display: none;
+}
+
+/* 開いたメニュー */
+.header-menu-content {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  width: 210px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+}
+
+.header-menu-content button {
+  width: 100%;
+  padding: 14px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #333;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.header-menu-content button:hover {
+  background: #fff3e6;
+  color: #ff8800;
+}
+
+/* 8つの性格タイプ一覧 */
+
+.personality-types-page {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.personality-types-content {
+  width: 100%;
+  max-width: 428px;
+  margin: 0 auto;
+ padding: 20px 20px 100px;
+  text-align: center;
+}
+
+.personality-types-content > h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #252525;
+}
+
+.personality-types-content > p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+.personality-type-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 36px 20px 32px;
+  margin-bottom: 24px;
+  border: none;
+  border-radius: 24px;
+  background: #fff5e9;
+  color: #333;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.personality-type-card:nth-of-type(even) {
+  background: #f3f0ff;
+}
+
+.personality-type-card img {
+  width: 100%;
+  max-width: 270px;
+  height: 270px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.personality-type-card h2 {
+  font-size: 25px;
+  font-weight: 800;
+  margin: 8px 0;
+}
+
+.personality-type-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 8px 0 18px;
+}
+
+.personality-type-card span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ed8500;
+}
+
+.personality-type-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.personality-type-card:active {
+  transform: scale(0.98);
+}
+/* 性格タイプ詳細ページ */
+
+.personality-detail-page {
+  min-height: 100vh;
+  background: #fff;
+}
+
+.personality-detail-content {
+  width: 100%;
+  max-width: 428px;
+  margin: 0 auto;
+  padding: 48px 20px 120px;
+  text-align: center;
+}
+
+.personality-detail-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ed8500;
+  margin-bottom: 28px;
+}
+
+.personality-detail-image {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  object-fit: contain;
+  margin: 0 auto 24px;
+}
+
+.personality-detail-content h1 {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.personality-detail-content h2 {
+  font-size: 16px;
+  color: #777;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.personality-detail-summary {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.9;
+  margin-bottom: 48px;
+}
+
+.personality-detail-features {
+  text-align: left;
+}
+
+.personality-detail-feature {
+  padding: 26px 22px;
+  margin-bottom: 18px;
+  background: #fff7ed;
+  border-radius: 20px;
+}
+
+.personality-detail-feature h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.personality-detail-feature p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #555;
+}
+
+.personality-detail-back {
+  width: 100%;
+  padding: 17px;
+  margin-top: 32px;
+  border: 1px solid #ed8500;
+  border-radius: 14px;
+  background: #fff;
+  color: #ed8500;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.personality-detail-back:hover {
+  background: #fff3e2;
+  transform: translateY(-2px);
+}
+/* 性格タイプ一覧・詳細ページの横幅を統一 */
+
+.personality-types-page,
+.personality-detail-page {
+  width: 100%;
+  max-width: 428px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: #ffffff;
+}
+
+.personality-types-content,
+.personality-detail-content {
+  width: 100%;
+  max-width: 428px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* スマホ画面では横幅いっぱいに表示 */
+@media (max-width: 428px) {
+  .personality-types-page,
+  .personality-detail-page {
+    max-width: 100%;
+  }
+}
+/* 性格タイプ一覧：見出しとキャラクターの間隔 */
+.personality-types-content > p {
+  margin-bottom: 12px;
+}
+
+.personality-type-card:first-of-type {
+  margin-top: 0;
+}
+/* 性格タイプ一覧：見出し上の余白を調整 */
+.personality-types-content {
+  padding-top: 20px;
+}
