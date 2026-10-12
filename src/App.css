@@ -1799,20 +1799,18 @@ justify-content: center;
 .personality-result-hero {
   position: relative;
   overflow: hidden;
-  padding: 34px 20px 28px;
+  padding: 36px 20px 32px;
   text-align: center;
 
-  background:
-    radial-gradient(
-      circle at 50% 38%,
-      #fffaf0 0%,
-      #fff1d8 52%,
-      #ffe7bc 100%
-    );
+  background: linear-gradient(
+    180deg,
+    #fffaf2 0%,
+    #fff3df 100%
+  );
 
-  border: 1px solid #f1d4ad;
-  border-radius: 28px;
-  box-shadow: 0 14px 34px rgba(202, 119, 34, 0.12);
+  border: 1px solid #f5e4ce;
+  border-radius: 24px;
+  box-shadow: none;
 }
 
 .personality-result-label {
@@ -2511,7 +2509,7 @@ justify-content: center;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 428px;
+  max-width: 400px;
   height: 72px;
   display: flex;
   align-items: center;
@@ -2822,4 +2820,213 @@ justify-content: center;
 /* 性格タイプ一覧：見出し上の余白を調整 */
 .personality-types-content {
   padding-top: 20px;
+}
+
+/* 性格診断結果：新ファーストビュー */
+.personality-result-page {
+  --result-bg: #e9a35f;
+  background: var(--result-bg);
+}
+
+.personality-result-hero {
+  box-sizing: border-box;
+  min-height: 100svh;
+  width: 100%;
+  padding: 90px 24px 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--result-bg);
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.personality-result-hero .personality-result-label {
+  margin: 0 0 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.personality-result-hero .personality-result-type {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(36px, 10vw, 48px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.personality-result-hero .personality-result-subtitle {
+  margin: 12px 0 0;
+  padding: 0;
+  background: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.personality-result-hero .personality-result-image {
+  display: block;
+  width: min(80%, 310px);
+  height: auto;
+  max-height: 38svh;
+  object-fit: contain;
+  margin: auto 0;
+  filter: none;
+}
+
+.personality-result-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.personality-result-scroll span:last-child {
+  font-size: 24px;
+  animation: result-scroll-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes result-scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
+}
+
+/* 診断結果：タイプ別テーマカラー */
+.personality-result-page {
+  background: var(--result-color);
+  color: #fff;
+}
+
+.personality-result-hero {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+/* 診断結果：背景の巨大文字 */
+.personality-result-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.personality-result-bg-text {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+
+  font-size: clamp(64px, 17vw, 100px);
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  line-height: 1;
+  white-space: nowrap;
+
+  color: rgba(255, 255, 255, 0.22);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.personality-result-image {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== 性格診断結果：新デザイン ===== */
+
+.personality-result-page {
+  background: #ffffff;
+  color: #222222;
+}
+
+.personality-result-hero {
+  min-height: auto;
+  width: auto;
+  margin: 28px 20px 36px;
+  padding: 36px 20px 40px;
+
+  background: #fff7ed;
+  color: #222222;
+
+  border: 1px solid #f8ebda;
+  border-radius: 24px;
+  box-shadow: none;
+}
+/* ===== 診断結果：カード内の調整 ===== */
+
+.personality-result-hero {
+  padding: 32px 20px 36px;
+  gap: 0;
+}
+
+.personality-result-hero .personality-result-label {
+  color: #e97800;
+  margin: 0 0 24px;
+  font-size: 13px;
+}
+
+.personality-result-hero .personality-result-type {
+  color: #222222;
+  font-size: 30px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.personality-result-hero .personality-result-subtitle {
+  color: #777777;
+  font-size: 14px;
+  margin: 10px 0 20px;
+}
+
+.personality-result-bg-text {
+  display: none;
+}
+
+.personality-result-hero .personality-result-image {
+  width: min(85%, 300px);
+  max-height: 280px;
+}
+
+.personality-result-scroll {
+  display: none;
+}
+/* 診断結果：説明文を読みやすくする */
+.personality-result-page .personality-result-details,
+.personality-result-page .personality-result-details p,
+.personality-result-page .personality-result-card p {
+  text-align: left;
+}
+
+/* 診断結果：特徴カードの文章を読みやすく */
+.personality-feature-item .personality-feature-text {
+  text-align: left;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  white-space: pre-line;
+  margin: 16px 0 0;
+}
+
+/* 特徴カードの見出しは中央揃え */
+.personality-feature-item .personality-feature-title {
+  text-align: center;
+  margin-bottom: 12px;
 }

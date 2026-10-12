@@ -108,37 +108,57 @@ console.log("最大スコア:", maxScore);
 console.log("結果番号:", resultIndex);
 
 const result = personalityResults[resultIndex];
+const resultThemes = [
+  { color: "#FF8A32", accent: "#FFE4A8" },
+  { color: "#F4B83F", accent: "#FFF0B8" },
+  { color: "#72BFA1", accent: "#D9F5E8" },
+  { color: "#E78DA8", accent: "#FFE0EA" },
+  { color: "#9B8CD8", accent: "#E8DEFF" },
+  { color: "#6489BE", accent: "#D9E8FF" },
+  { color: "#7A9BBD", accent: "#E0ECF5" },
+  { color: "#63738F", accent: "#DCE3F0" },
+];
+
+const theme = resultThemes[resultIndex];
 
   return (
-    <section
+   <section
   className="personality-result-page page-fade"
+  style={{
+    "--result-color": theme.color,
+    "--result-accent": theme.accent,
+  }}
 >
-      <div
+<div
   id="personality-result-capture"
   className="personality-result-hero"
 >
-        <p className="personality-result-label">
-          診断結果
-        </p>
+  <div className="personality-result-bg-text" aria-hidden="true">
+  {result.type.replace(/^[^\u4e00-\u9fff]+/, "")}
+</div>
+  <p className="personality-result-label">
+    あなたの診断結果
+  </p>
 
-        <h1 className="personality-result-type">
-          {result.type}
-        </h1>
+  <h1 className="personality-result-type">
+    {result.type}
+  </h1>
 
-        <p className="personality-result-subtitle">
-          {result.subtitle}
-        </p>
+  <p className="personality-result-subtitle">
+    {result.subtitle}
+  </p>
 
   <img
-  src={result.image}
-  alt={result.type}
-  className="personality-result-image"
-/>
+    src={result.image}
+    alt={result.type}
+    className="personality-result-image"
+  />
 
-        <p className="personality-result-summary">
-          {result.summary}
-        </p>
-      </div>
+  <div className="personality-result-scroll">
+    <span>SCROLL TO EXPLORE</span>
+    <span>↓</span>
+  </div>
+</div>
 
       <div className="personality-result-content">
       <section className="personality-result-section personality-feature-section">
