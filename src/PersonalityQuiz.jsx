@@ -1,18 +1,30 @@
+import "./PersonalityResult.css";
 import html2canvas from "html2canvas";
 import { personalityResults } from "./personalityResultData";
-import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
+import { calculatePersonalityStats } from "./personalityStats";
 import {
   personalityQuestions,
   personalityTypeNames,
 } from "./personalityQuizData";
-
-export default function PersonalityQuiz() {
+import { useState, useEffect } from "react";
+export default function PersonalityQuiz({ onFinishedChange }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [scores, setScores] = useState(Array(8).fill(0));
 const [selectedOption, setSelectedOption] = useState(null);
 const [isTransitioning, setIsTransitioning] = useState(false);
   const [scoreHistory, setScoreHistory] = useState([]);
+const [answerHistory, setAnswerHistory] = useState([]);
+const [resultRating, setResultRating] = useState(null);
+useEffect(() => {
+  if (resultRating === null) return;
+
+  const timer = setTimeout(() => {
+    setResultRating("done");
+  }, 2000);
+
+  return () => clearTimeout(timer);
+}, [resultRating]);
   const [finished, setFinished] = useState(false);
 
   const question = personalityQuestions[currentQuestion];
@@ -34,13 +46,15 @@ const [isTransitioning, setIsTransitioning] = useState(false);
 console.log("加算後のスコア:", newScores);
 
     setScoreHistory((history) => [...history, answerScores]);
+    setAnswerHistory((history) => [...history, optionIndex]);
     setScores(newScores);
 
     const isLastQuestion =
       currentQuestion === personalityQuestions.length - 1;
 
     if (isLastQuestion) {
-      setFinished(true);
+  setFinished(true);
+  onFinishedChange?.(true);
       setSelectedOption(null);
       setIsTransitioning(false);
       return;
@@ -66,6 +80,9 @@ console.log("加算後のスコア:", newScores);
     }
 
     setScoreHistory((history) => history.slice(0, -1));
+
+setAnswerHistory((history) => history.slice(0, -1));
+
     setCurrentQuestion((current) => current - 1);
 
     setSelectedOption(null);
@@ -108,6 +125,9 @@ console.log("最大スコア:", maxScore);
 console.log("結果番号:", resultIndex);
 
 const result = personalityResults[resultIndex];
+
+const personalityStats = calculatePersonalityStats(answerHistory);
+
 const resultThemes = [
   { color: "#FF8A32", accent: "#FFE4A8" },
   { color: "#F4B83F", accent: "#FFF0B8" },
@@ -122,23 +142,16 @@ const resultThemes = [
 const theme = resultThemes[resultIndex];
 
   return (
-   <section
-  className="personality-result-page page-fade"
-  style={{
-    "--result-color": theme.color,
-    "--result-accent": theme.accent,
-  }}
->
+   <section className="personality-result-page page-fade">
+    <p className="personality-result-heading">
+  あなたのキャラタイプ
+</p>
 <div
   id="personality-result-capture"
   className="personality-result-hero"
+  style={{ backgroundColor: result.backgroundColor }}
 >
-  <div className="personality-result-bg-text" aria-hidden="true">
-  {result.type.replace(/^[^\u4e00-\u9fff]+/, "")}
-</div>
-  <p className="personality-result-label">
-    あなたの診断結果
-  </p>
+
 
   <h1 className="personality-result-type">
     {result.type}
@@ -148,16 +161,13 @@ const theme = resultThemes[resultIndex];
     {result.subtitle}
   </p>
 
-  <img
-    src={result.image}
-    alt={result.type}
-    className="personality-result-image"
-  />
+ <img
+  src={result.image}
+  alt={result.type}
+  className={`personality-result-image personality-character-${result.id}`}
+/>
 
-  <div className="personality-result-scroll">
-    <span>SCROLL TO EXPLORE</span>
-    <span>↓</span>
-  </div>
+
 </div>
 
       <div className="personality-result-content">
@@ -189,13 +199,91 @@ const theme = resultThemes[resultIndex];
   </p>
 </section>
 
+
+<section className="personality-result-section personality-stats-section">
+  <h2>📊 君の裏ステータス</h2>
+
+  <div className="personality-stats-card">
+    {personalityStats.map((stat) => (
+      <div className="personality-stat-item" key={stat.id}>
+        <h3 className="personality-stat-title">
+          {stat.emoji} {stat.name}
+        </h3>
+
+        <p className="personality-stat-description">
+          {stat.description}
+        </p>
+
+        <div className="personality-stat-labels">
+          <span>{stat.left}</span>
+          <span>{stat.right}</span>
+        </div>
+
+        <div className="personality-stat-track">
+          <div
+            className="personality-stat-fill"
+            style={{
+              width: `${stat.value}%`,
+              backgroundColor: stat.color,
+            }}
+          />
+        </div>
+
+        <p className="personality-stat-value">
+          {stat.value}%
+        </p>
+      </div>
+    ))}
+  </div>
+</section>
+
         <section className="personality-result-section">
           <h2>💪 君の強み</h2>
 
+          
+<ul>
+  {result.strengths.map((strength, index) => (
+    <li key={index}>
+      {typeof strength === "string" ? (
+        strength
+      ) : (
+        <div className="personality-strength-content">
+          <strong className="personality-strength-title">
+            {strength.title}
+          </strong>
+          <p className="personality-strength-description">
+            {strength.text}
+          </p>
+        </div>
+      )}
+    </li>
+  ))}
+</ul>
+
+        </section>
+
+        <section className="personality-result-section">
+          <h2>⚠️ 気をつけたいこと</h2>
+
           <ul>
-            {result.strengths.map((strength) => (
-              <li key={strength}>{strength}</li>
-            ))}
+            
+{result.cautions.map((caution, index) => (
+  <li key={index}>
+    {typeof caution === "string" ? (
+      caution
+    ) : (
+      <div className="personality-strength-content">
+        <strong className="personality-strength-title">
+          {caution.title}
+        </strong>
+        <p className="personality-strength-description">
+          {caution.text}
+        </p>
+      </div>
+    )}
+  </li>
+))}
+
           </ul>
         </section>
 
@@ -209,27 +297,26 @@ const theme = resultThemes[resultIndex];
 
         </section>
 
-        <section className="personality-result-section">
-          <h2>🎯 君に向いていること</h2>
+       
+<section className="personality-result-section personality-manual-section">
+  <h2>📖 取り扱い説明書</h2>
 
-          <ul>
-            {result.jobs.map((job) => (
-              <li key={job}>{job}</li>
-            ))}
-          </ul>
-        </section>
+  <div className="personality-manual-list">
+    {result.manual?.map((item) => (
+      <div className="personality-manual-item" key={item.title}>
+        <h3>{item.title}</h3>
+        <p>{item.text}</p>
+      </div>
+    ))}
+  </div>
+</section>
 
-        <section className="personality-result-section">
-          <h2>⚠️ 気をつけたいこと</h2>
 
-          <ul>
-            {result.cautions.map((caution) => (
-              <li key={caution}>{caution}</li>
-            ))}
-          </ul>
-        </section>
+        
 
-        <section className="personality-result-ending">
+     <section
+  className={`personality-result-ending personality-character-${result.id}`}
+>
           <h2>{result.ending.title}</h2>
 
           <p>{result.ending.message}</p>
@@ -237,28 +324,33 @@ const theme = resultThemes[resultIndex];
           <strong>{result.ending.quote}</strong>
         </section>
 
-        <button
-          type="button"
-          className="food-restart-button personality-restart-button"
-          onClick={() => {
-            setCurrentQuestion(0);
-            setScores(Array(8).fill(0));
-            setScoreHistory([]);
-            setSelectedOption(null);
-            setIsTransitioning(false);
-            setFinished(false);
-          }}
-        >
-          もう一度診断する
-        </button>
+<div className="personality-result-rating">
+  {resultRating === null ? (
+    <>
+      <p>今回の診断結果はどのくらい当たってた？</p>
 
-        <button
-  type="button"
-  className="save-image-button personality-save-button"
-  onClick={handleSaveResultImage}
->
-  結果を画像で保存
-</button>
+      <div className="personality-rating-options">
+        {["🙁", "😐", "🙂", "😄"].map((face, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={() => setResultRating(index + 1)}
+            aria-label={`4段階中${index + 1}`}
+          >
+            {face}
+          </button>
+        ))}
+      </div>
+    </>
+) : resultRating === "done" ? null : (
+  <p className="personality-rating-thanks">
+    回答ありがとう！✨
+  </p>
+)}
+</div>
+
+
+  
 
       </div>
     </section>

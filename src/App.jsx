@@ -591,6 +591,7 @@ function calculateResult(answers) {
 }
 
 function App() {
+  const [personalityFinished, setPersonalityFinished] = useState(false);
   const [page, setPage] = useState('home')
   const resultCardRef = useRef(null)
 
@@ -931,7 +932,10 @@ if (page === 'home') {
 
     <button
       className="personality-top-button"
-      onClick={() => setPage("personality-quiz")}
+      onClick={() => {
+  setPersonalityFinished(false);
+  setPage("personality-quiz");
+}}
     >
       診断してみる
     </button>
@@ -1091,16 +1095,16 @@ if (page === 'about') {
   }
 
   if (page === 'personality-types') {
-  const types = [
-    { name: '👑 王道陽キャ', image: 'king.png', description: 'みんなの中心で輝くリーダータイプ' },
-    { name: '🌟 万能陽キャ', image: 'allrounder.png', description: '誰とでも自然に打ち解ける人気者' },
-    { name: '🌿 穏和陽キャ', image: 'calm.png', description: '優しさで周囲を包み込む癒し系' },
-    { name: '🎭 仮面陽キャ', image: 'mask-positive.png', description: '明るく振る舞いながら自分の時間も大切にする' },
-    { name: '🌙 仮面陰キャ', image: 'masked-introvert.png', description: '人付き合い上手な隠れ内向型' },
-    { name: '🏔️ 孤高陰キャ', image: 'lonewolf.png', description: '自分の世界を大切にする自由人' },
-    { name: '🎨 職人陰キャ', image: 'artisan.png', description: '好きなことをとことん極める探究者' },
-    { name: '🌌 純正陰キャ', image: 'pure-introvert.png', description: '静かな時間を愛するマイペースタイプ' },
-  ];
+const types = [
+  { name: '👑 王道陽キャ', image: 'king.png', description: 'みんなの中心で輝くリーダータイプ', bgColor: '#fff1da' },
+  { name: '🌟 万能陽キャ', image: 'allrounder.png', description: '誰とでも自然に打ち解ける人気者', bgColor: '#fff9d9' },
+  { name: '🌿 穏和陽キャ', image: 'calm.png', description: '優しさで周囲を包み込む癒し系', bgColor: '#fff0f2' },
+  { name: '🎭 仮面陽キャ', image: 'mask-positive.png', description: '明るく振る舞いながら自分の時間も大切にする', bgColor: '#f3eaff' },
+  { name: '🌙 仮面陰キャ', image: 'masked-introvert.png', description: '人付き合い上手な隠れ内向型', bgColor: '#eaf1ff' },
+  { name: '🏔️ 孤高陰キャ', image: 'lonewolf.png', description: '自分の世界を大切にする自由人', bgColor: '#f0f1f4' },
+  { name: '🎨 職人陰キャ', image: 'artisan.png', description: '好きなことをとことん極める探究者', bgColor: '#e5f7fc' },
+  { name: '🌌 純正陰キャ', image: 'pure-introvert.png', description: '静かな時間を愛するマイペースタイプ', bgColor: '#eaf5e9' },
+];
 
   return (
     <main className="personality-types-page">
@@ -1115,6 +1119,7 @@ if (page === 'about') {
             key={type.image}
             type="button"
             className="personality-type-card"
+            style={{ backgroundColor: type.bgColor }}
             onClick={() => setPage(`personality-detail-${index}`)}
           >
             <img
@@ -1210,7 +1215,10 @@ if (page === 'diagnosis-list') {
             <button
               type="button"
               className="diagnosis-featured-button"
-              onClick={() => setPage('personality-quiz')}
+              onClick={() => {
+  setPersonalityFinished(false);
+  setPage('personality-quiz');
+}}
             >
               診断する
             </button>
@@ -1311,19 +1319,24 @@ if (page === 'diagnosis-list') {
           </div>
         </section>
       </section>
-    </main>
-    <BottomNav setPage={setPage} />
-  </>
+ </main>
+<BottomNav setPage={setPage} />
+</>
   )
 }
 
 if (page === "personality-quiz") {
   return (
-    <main className="food-page">
-      <Header setPage={setPage} />
-      <PersonalityQuiz />
-    </main>
-  )
+    <>
+      <main className="food-page">
+        <Header setPage={setPage} />
+        <PersonalityQuiz onFinishedChange={setPersonalityFinished} />
+        
+      </main>
+
+      {personalityFinished && <BottomNav setPage={setPage} />}
+    </>
+  );
 }
 
 if (page === 'food-list') {
