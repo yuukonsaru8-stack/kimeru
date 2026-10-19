@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './App.css'
 import { toPng } from 'html-to-image'
 import pairsLogo from './assets/pairs.svg'
@@ -592,7 +592,27 @@ function calculateResult(answers) {
 
 function App() {
   const [personalityFinished, setPersonalityFinished] = useState(false);
-  const [page, setPage] = useState('home')
+  const [page, setPageState] = useState('home')
+
+const setPage = (nextPage) => {
+  if (nextPage === page) return
+
+  window.history.pushState({ page: nextPage }, '', `#${nextPage}`)
+  setPageState(nextPage)
+}
+
+useEffect(() => {
+  const handlePopState = (event) => {
+    const previousPage = event.state?.page || 'home'
+    setPageState(previousPage)
+  }
+
+  window.addEventListener('popstate', handlePopState)
+
+  return () => {
+    window.removeEventListener('popstate', handlePopState)
+  }
+}, [])
   const resultCardRef = useRef(null)
 
   const Header = ({ setPage }) => (
